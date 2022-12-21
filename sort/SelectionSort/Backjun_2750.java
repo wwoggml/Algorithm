@@ -1,32 +1,64 @@
 package SelectionSort;
 
-import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 
 public class Backjun_2750 {
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        int n = scanner.nextInt();
+    static final int MAX = 5;
+    static int[] sorted = new int[MAX];
+    public static void merge(int list[], int left, int mid, int right) {
+        int i, j, k, l;
+        i = left;
+        j = mid + 1;
+        k = left;
 
+        while (i <= mid && j <= right) {
+            if (list[i] <= list[j])
+                sorted[k++] = list[i++];
+            else
+                sorted[k++] = list[j++];
+        }
+
+        if (i > mid) {
+            for (l = j; l <= right; l++)
+                sorted[k++] = list[l];
+        }
+        else {
+            for (l = i; l <= mid; l++)
+                sorted[k++] = list[l];
+        }
+        for(l = left; l<=right; l++) {
+            list[l] = sorted[l];
+        }
+    }
+
+
+    public static void merge_sort(int list[], int left, int right){
+        int mid;
+        if(left < right) {
+            mid  = (left + right) / 2;
+            merge_sort(list,left,mid);
+            merge_sort(list,mid+1,right);
+            merge(list,left,mid,right);
+        }
+
+    }
+
+
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+        int n = Integer.parseInt(br.readLine());
         int list[] = new int[n];
 
-        int i,j,temp;
-
-        for(i = 0; i<n; i++) {
-            list[i] = scanner.nextInt();
+        for(int i = 0; i<n; i++) {
+            list[i] = Integer.parseInt(br.readLine());
         }
 
-        for(i = 0; i<n-1; i++) {
-            for(j = i+1; j<n; j++) {
-                if(list[j] < list[i]) {
-                    temp = list[i];
-                    list[i] = list[j];
-                    list[j] = temp;
-                }
-            }
-        }
+        merge_sort(list,0,n-1);
 
-        for (i = 0; i<n; i++) {
-            System.out.println(list[i]);
-        }
+        System.out.println(list);
+
     }
 }
