@@ -5,8 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class Backjun_2750 {
-    static final int MAX = 5;
-    static int[] sorted = new int[MAX];
+    static int sorted[];
     public static void merge(int list[], int left, int mid, int right) {
         int i, j, k, l;
         i = left;
@@ -51,14 +50,17 @@ public class Backjun_2750 {
 
         int n = Integer.parseInt(br.readLine());
         int list[] = new int[n];
+        sorted = new int[n];
 
-        for(int i = 0; i<n; i++) {
+        for(int i = 0; i<list.length; i++) {
             list[i] = Integer.parseInt(br.readLine());
         }
 
-        merge_sort(list,0,n-1);
+        merge_sort(list,0,list.length-1);
 
-        System.out.println(list);
+        for(int i = 0; i<list.length; i++) {
+            System.out.println(list[i]);
+        }
 
     }
 }
