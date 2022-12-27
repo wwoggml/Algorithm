@@ -8,10 +8,11 @@ public class Baekjoon_11660 {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st;
         st = new StringTokenizer(br.readLine());
-        int x1, y1, x2, y2;
+
         int N = Integer.parseInt(st.nextToken());
         int M = Integer.parseInt(st.nextToken());
 
+        int x1, y1, x2, y2;
         int[][] D = new int[N+1][N+1];
 
         for(int i = 1; i<=N; i++) {
