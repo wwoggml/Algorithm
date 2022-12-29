@@ -25,27 +25,61 @@ public class Baekjoon_12891 {
             if(check_array[i] == 0) check++;
         }
 
-        int start_index = 0;
-        int end_index = start_index + P-1;
+        for(int i = 0; i<P; i++) {
+            Add(dna[i]);
+        }
 
-        while (end_index < S) {
-            for(int i = start_index; i<=end_index; i++) {
-                if(dna[i] == 'A') current_array[0]++;
-                else if(dna[i] == 'C') current_array[1]++;
-                else if(dna[i] == 'G') current_array[2]++;
-                else current_array[3]++;
-            }
+        if(check == 4) count++;
 
-            for(int i = 0; i<4; i++) {
-                if(check_array[i] == current_array[i]) check++;
-                current_array[i] = 0;
-            }
+        for(int i = P; i<S; i++) {
+            int j = i-P;
+            Add(dna[i]);
+            Remove(dna[j]);
             if(check == 4) count++;
-            start_index++;
-            end_index = start_index + P-1;
-            check = 0;
         }
 
         System.out.println(count);
+    }
+
+    static void Add(char c) {
+        switch (c) {
+            case 'A':
+                current_array[0]++;
+                if(current_array[0] == check_array[0]) check++;
+                break;
+            case 'C':
+                current_array[1]++;
+                if(current_array[1] == check_array[1]) check++;
+                break;
+            case 'G':
+                current_array[2]++;
+                if(current_array[2] == check_array[2]) check++;
+                break;
+            case 'T':
+                current_array[3]++;
+                if(current_array[3] == check_array[3]) check++;
+                break;
+        }
+    }
+
+    static void Remove(char c) {
+        switch (c) {
+            case 'A':
+                if(current_array[0] == check_array[0]) check--;
+                current_array[0]--;
+                break;
+            case 'C':
+                if(current_array[1] == check_array[1]) check--;
+                current_array[1]--;
+                break;
+            case 'G':
+                if(current_array[2] == check_array[2]) check--;
+                current_array[2]--;
+                break;
+            case 'T':
+                if(current_array[3] == check_array[3]) check--;
+                current_array[3]--;
+                break;
+        }
     }
 }
