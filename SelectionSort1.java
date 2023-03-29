@@ -1,5 +1,3 @@
-package SelectionSort;
-
 public class SelectionSort1 {
     public static void selection_sort(int list[], int n) {
         int i, j, least, temp;

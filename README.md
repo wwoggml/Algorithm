@@ -13,3 +13,4 @@ map 함수 : 첫 번째 매개변수는 적용할 함수, 두 번째 매개변�
 1000번, 1001번에서 사용한 input().split()는 매번 결과를 int형으로 변환해주어야 하는데 map함수를 사용하면 결과 모두를 int로 변환해준다.
 x1, y1, r1, x2, y2, r2 = map(int, input().split()) : split의 결과를 int형으로 타입을 변경한다.
 
+# Baekjoon

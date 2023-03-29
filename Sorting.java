@@ -1,5 +1,3 @@
-package SelectionSort;
-
 import java.util.List;
 
 public class Sorting {
